@@ -1,0 +1,142 @@
+openapi: 3.1.0
+info:
+  title: Longtail Keyword Extractor
+  version: 1.0.0
+paths:
+  /get_keywords_by_seed:
+    get:
+      operationId: getKeywordsBySeed
+      summary: Generate long-tail keywords based on a seed keyword using Google APIs
+      parameters:
+        - name: seed
+          in: query
+          description: The seed keyword to generate long-tail queries from
+          required: true
+          schema:
+            type: string
+        - name: lang
+          in: query
+          description: Language code (default: ko)
+          required: false
+          schema:
+            type: string
+            default: ko
+        - name: region
+          in: query
+          description: Region code (default: KR)
+          required: false
+          schema:
+            type: string
+            default: KR
+        - name: min_volume
+          in: query
+          description: Minimum estimated monthly search volume
+          required: false
+          schema:
+            type: integer
+        - name: max_volume
+          in: query
+          description: Maximum estimated monthly search volume
+          required: false
+          schema:
+            type: integer
+        - name: max_token_length
+          in: query
+          description: Maximum token count for keywords
+          required: false
+          schema:
+            type: integer
+        - name: max_results
+          in: query
+          description: Maximum number of keywords to return
+          required: false
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: A list of extracted keywords with volume, CPC, and competition score
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  keywords:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        keyword:
+                          type: string
+                        volume:
+                          type: integer
+                        cpc:
+                          type: number
+                        competition:
+                          type: number
+
+  /get_trending_keywords:
+    get:
+      operationId: getTrendingKeywords
+      summary: Extract recent trending keywords based on web-scraped sources (news, search behavior, autocomplete)
+      parameters:
+        - name: lang
+          in: query
+          description: Language code (default: ko)
+          required: false
+          schema:
+            type: string
+            default: ko
+        - name: region
+          in: query
+          description: Region code (default: KR)
+          required: false
+          schema:
+            type: string
+            default: KR
+        - name: min_volume
+          in: query
+          description: Minimum estimated monthly search volume
+          required: false
+          schema:
+            type: integer
+        - name: max_volume
+          in: query
+          description: Maximum estimated monthly search volume
+          required: false
+          schema:
+            type: integer
+        - name: max_token_length
+          in: query
+          description: Maximum token count for extracted keywords
+          required: false
+          schema:
+            type: integer
+        - name: max_results
+          in: query
+          description: Maximum number of keywords to return
+          required: false
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: A list of trending keywords with volume, CPC, and competition score
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  keywords:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        keyword:
+                          type: string
+                        volume:
+                          type: integer
+                        cpc:
+                          type: number
+                        competition:
+                          type: number
