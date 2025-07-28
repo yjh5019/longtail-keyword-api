@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Longtail Keyword GPT",
+  "name_for_model": "longtail_keyword_gpt",
+  "description_for_human": "한국 사용자를 위한 롱테일 키워드 추출기. 블로그, SEO, 트렌드 키워드 수집에 최적화됨.",
+  "description_for_model": "Extract long-tail Korean keywords using Google Autocomplete, Search, and PAA data. Filter by volume, CPC, and competition. Ideal for SEO/blogging.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://raw.githubusercontent.com/yjh5019/longtail-keyword-api/main/longtail_keywords_api.yaml",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://avatars.githubusercontent.com/u/9919?s=200&v=4",
+  "contact_email": "your@email.com",
+  "legal_info_url": "https://yourdomain.com/legal"
+}
